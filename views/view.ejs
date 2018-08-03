@@ -1,0 +1,55 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View</title>
+    <link rel="stylesheet" href="../stylesheets/master.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">   
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <a class="navbar-brand" href="/">Good Food</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="">Home</a></li>
+          <li><a href="/create">Create content</a></li>
+          <li><a href="/reg">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+  <div style="margin-top: 5em"></div>
+<div class="viewContainer">
+<h1><%= posts.title %></h1>
+<img style="width:30%;" src="<%= posts.img %>" >
+<hr>
+<p style="width:30%;" ><%- posts.extra %></p>
+<hr>
+ <p>Date published <%= posts.date %></p>
+<p>By <%= posts.author %></p>
+
+      
+<button style="width:10em">
+  <a href="/update/<%= posts.id %>" class="btn btn-block btn-primary">Update</a>
+</button>
+<button>
+  <a href="/delete/<%= posts.id %>" class="btn btn-block btn-danger">Delete</a>
+</button>          
+
+</div>
+
+<footer>
+  <p>&copy; 2018 Great Foods</p>
+</footer>
+</body>
+</html>

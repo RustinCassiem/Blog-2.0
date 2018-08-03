@@ -1,1 +1,2 @@
-# Blog-2.0
+# my_blog
+Creating a blog using express and ejs

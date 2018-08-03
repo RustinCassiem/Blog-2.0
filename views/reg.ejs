@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SJ - Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <style>
+        nav ul, nav div {
+            display: none;
+        }    
+    </style>
+</head>
+<body class="formWrap">
+
+<% include ./templates/header.ejs %>
+
+    <section class="container">
+        <div style="display: grid;">
+        <% if (messages != false) { %>
+            <p style="margin: 0 auto;margin-top: 5px;text-align:  center;padding: 30px;background-color: #ffffff4a;">
+                <%= messages %>
+            </p>
+        <% } %>
+        </div>
+        <article>
+            <div id="container">
+                <h1>Register</h1>
+
+                <form action="/regUser" method="POST">
+                    <span class="field">
+                        <p>Username:</p> <input type="text" name="username" id="username">
+                    </span>
+                    <span class="field">
+                        <p>Password:</p> <input type="password" name="password" id="password">
+                    </span>
+                    <span class="field">
+                        <p>Retype Password:</p> <input type="password" name="conPass" id="conPass">
+                    </span>
+                    <button type="submit">Register</button>
+                </form>
+
+            </div>
+        </article>
+    </section>
+
+    <% include ./templates/footer.ejs %>
+
+
+    
+</body>
+</html>
