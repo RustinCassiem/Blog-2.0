@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>View</title>
-    <link rel="stylesheet" href="../stylesheets/master.css">
+    <script src="../javascripts/jquery-3.3.1.min.js"></script>
+    <script src="../javascripts/script.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">   
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
 </head>
 
 <body>
@@ -31,8 +35,9 @@
   <div style="margin-top: 5em"></div>
 <div class="viewContainer">
 <h1><%= posts.title %></h1>
-<img style="width:30%;" src="<%= posts.img %>" >
+<img style="width:300px;height: 300px" src="<%= posts.img %>" >
 <hr>
+<p style="width:30%;" ><%- posts.content %></p>
 <p style="width:30%;" ><%- posts.extra %></p>
 <hr>
  <p>Date published <%= posts.date %></p>

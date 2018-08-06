@@ -2,13 +2,10 @@ var express = require('express');
 var router = express.Router();
 var posts = require('../db.json');
 var request = require('request');
-var store = require('../db.json');
-var arrayData = store.users;
-var pos = store.posts;
+
  
 
-// var app = express();
-// var reload = require('../../reload');
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -19,6 +16,103 @@ router.get('/', function (req, res, next) {
     posts: posts.posts
   });
 });
+/*login*/ 
+router.get('/signup', function (req, res, next) {
+
+
+  res.render('signup', {
+    title: "Signup",
+    posts: posts.posts
+  });
+});
+
+/*sign up*/ 
+router.get('/login', function (req, res, next) {
+
+
+  res.render('signup', {
+    title: "Signup",
+    posts: posts.posts
+  });
+});
+
+
+/* GET login page. */
+router.get('/', function (req, res, next) {
+  res.render('login', {
+    title: "login",
+    users: db.users,
+    message: false
+  });
+});
+
+
+/* POST login page */
+router.post('/', function (req, res, next) {
+
+  var users = db.users;
+  var username = req.body.username;
+  var password = req.body.password;
+  console.log("Username: " + username);
+  console.log("Password: " + password);
+
+  for (let i = 0; i < users.length; i++) {
+    if (username == users[i].username && password == users[i].password) {
+      // Need to create cookie
+      console.log("Display message: Logged in succesfully");
+      res.render('index', {
+        title: "Home",
+        posts: db.posts,
+        message: "Succesful"
+      });
+      break;
+    }
+  }
+
+    res.render('login', {
+      title: "login",
+      users: db.users,
+      message: "Login failed. Please check your credentials and try again."
+    });
+
+});
+
+/* GET signup page. */
+router.get('/signup', function (req, res, next) {
+  res.render('signup', {
+    title: "signup"
+  });
+});
+
+
+
+/* POST user to users. */
+router.post('/signup', function (req, res, next) {
+
+  // res.send(req.body);
+  let obj = {
+    "firstName": req.body.firstName,
+    "lastName": req.body.lastName,
+    "about": req.body.about,
+    "username": req.body.username,
+    "password": req.body.password
+  };
+
+
+  request.post({
+
+    url: "http://localhost:8000/users",
+    body: obj,
+    json: true
+
+  }, function (error, response, body) {
+
+    res.redirect("/");
+
+  });
+
+});
+
 
 /* GET create page. */
 router.get('/create', function (req, res, next) {
